@@ -81,7 +81,10 @@ subprojects {
 
         modCompileOnly("maven.modrinth:lets-do-meadow:${rootProject.meadow_version}")
         modCompileOnly("maven.modrinth:lets-do-vinery:${rootProject.vinery_version}")
-        modCompileOnly("maven.modrinth:lets-do-brewery:${rootProject.brewery_version}")
+        modCompileOnly("maven.modrinth:lets-do-herbalbrews:${rootProject.herbalbrews_version}")
+        modCompileOnly("maven.modrinth:lets-do-brewery-farmcharm-compat:${rootProject.brewery_version}")
+        modCompileOnly("maven.modrinth:lets-do-bakery-farmcharm-compat:${rootProject.bakery_version}")
+        modCompileOnly("maven.modrinth:lets-do-candlelight-farmcharm-compat:${rootProject.candlelight_version}")
         modCompileOnly("maven.modrinth:do-api:${rootProject.doapi_version}-fabric")
     }
 

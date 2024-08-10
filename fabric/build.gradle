@@ -40,6 +40,16 @@ dependencies {
     //Mod Menu
     modImplementation("com.terraformersmc:modmenu:${rootProject.modmenu_version}")
 
+    modImplementation("maven.modrinth:lets-do-meadow:${rootProject.meadow_version}-fabric")
+    modImplementation("maven.modrinth:lets-do-vinery:${rootProject.vinery_version}-fabric")
+    modImplementation("maven.modrinth:lets-do-herbalbrews:${rootProject.herbalbrews_version}-fabric")
+    modImplementation("maven.modrinth:lets-do-farm-charm:${rootProject.farm_and_charm_version}-fabric")
+    modImplementation("maven.modrinth:lets-do-brewery-farmcharm-compat:${rootProject.brewery_version}-fabric")
+    modImplementation("maven.modrinth:lets-do-bakery-farmcharm-compat:${rootProject.bakery_version}-fabric")
+    modImplementation("maven.modrinth:lets-do-candlelight-farmcharm-compat:${rootProject.candlelight_version}-fabric")
+    modImplementation("maven.modrinth:do-api:${rootProject.doapi_version}-fabric")
+    modImplementation("blue.endless:jankson:${rootProject.jankson_version}")
+
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
     shadowBundle project(path: ':common', configuration: 'transformProductionFabric')
 }
