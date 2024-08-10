@@ -6,7 +6,8 @@
   "minVersion": "0.8",
   "client": [],
   "mixins": [
-    "GenericItemEmptyingMixin"
+    "GenericItemEmptyingMixin",
+    "GenericItemFillingMixin"
   ],
   "injectors": {
     "defaultRequire": 1

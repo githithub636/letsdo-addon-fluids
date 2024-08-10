@@ -1,43 +1,37 @@
 package dev.ninjdai.doaddoncreate.fabric.mixin;
 
-import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
-import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import com.llamalad7.mixinextras.sugar.Local;
-import com.simibubi.create.content.fluids.transfer.EmptyingRecipe;
 import com.simibubi.create.content.fluids.transfer.GenericItemEmptying;
-import dev.ninjdai.doaddoncreate.dependant.vinery.Vinery;
+import com.simibubi.create.foundation.utility.Pair;
+import dev.ninjdai.doaddoncreate.dependant.vinery.WineUtils;
+import dev.ninjdai.doaddoncreate.fabric.dependant.WineUtilsFabric;
 import dev.ninjdai.doaddoncreate.reflection.annotations.SupportsMod;
 import io.github.fabricators_of_create.porting_lib.fluids.FluidStack;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import satisfyu.vinery.registry.TagRegistry;
 
-import java.util.Objects;
-
-@Mixin(GenericItemEmptying.class)
 @SupportsMod("vinery")
+@Mixin(value = GenericItemEmptying.class)
+@Debug(export = true)
 public class GenericItemEmptyingMixin {
 
-    @WrapOperation(
-            method = "emptyItem",
-            at = @At(
-                    value = "INVOKE",
-                    target = "Lcom/simibubi/create/content/fluids/transfer/EmptyingRecipe;getResultingFluid()Lio/github/fabricators_of_create/porting_lib/fluids/FluidStack;",
-                    ordinal = 0
-            )
-    )
-    private static FluidStack wrapEmptyItem(EmptyingRecipe instance, Operation<FluidStack> original, @Local(argsOnly = true) ItemStack inputStack) {
-        FluidStack fl = instance.getResultingFluid();
-        if (inputStack.is(TagKey.create(Registries.ITEM, new ResourceLocation(new Vinery().supportedMod(), "wine")))) {
-            CompoundTag additionalData = Objects.requireNonNullElse(fl.getTag(), new CompoundTag());
-            additionalData.putString(new Vinery().supportedMod() + ":production_year", "red");
-            fl.setTag(additionalData);
+    @Inject(method = "emptyItem", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/Container;setItem(ILnet/minecraft/world/item/ItemStack;)V"), cancellable = true)
+    private static void emptyWine(Level world, ItemStack stack, boolean simulate, CallbackInfoReturnable<Pair<FluidStack, ItemStack>> cir) {
+        Pair<dev.architectury.fluid.FluidStack, ItemStack> result = WineUtils.emptyBottle(stack, simulate);
+        Pair<FluidStack, ItemStack> fabricatedResult = Pair.of(WineUtilsFabric.toPLFluidStack(result.getFirst()), result.getSecond());
+        if (stack.is(TagRegistry.WINE)) {
+            cir.setReturnValue(fabricatedResult);
         }
-        return fl;
+    }
+
+    @Inject(method = "canItemBeEmptied", at = @At(value = "HEAD"), cancellable = true)
+    private static void isWine(Level world, ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
+        if (stack.is(TagRegistry.WINE)) cir.setReturnValue(true);
     }
 
 }
