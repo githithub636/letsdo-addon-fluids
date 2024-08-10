@@ -1,8 +1,6 @@
 package dev.ninjdai.doaddoncreate.dependant.vinery;
 
 import com.teamresourceful.resourcefullib.common.registry.RegistryEntry;
-import com.tterrag.registrate.util.entry.FluidEntry;
-import dev.architectury.injectables.annotations.ExpectPlatform;
 import dev.ninjdai.doaddoncreate.reflection.ModSupport;
 import dev.ninjdai.doaddoncreate.reflection.annotations.SupportsMod;
 import dev.ninjdai.doaddoncreate.registry.DoAddonFluidProperties;
@@ -56,7 +54,7 @@ public class Vinery implements ModSupport {
     static DoAddonFluids.StateIndependantFluid TAIGA_RED_GRAPEJUICE;
     static DoAddonFluids.StateIndependantFluid TAIGA_WHITE_GRAPEJUICE;
 
-    static DoAddonFluids.StateIndependantFluid TEST_WINE;
+    static DoAddonFluids.StateIndependantFluid NOIR_WINE;
 
     public void registerFluids() {
         RED_GRAPEJUICE = DoAddonFluids.registerDualStatesByName("red_grapejuice", RED_GRAPEJUICE_PROPS);
@@ -68,7 +66,7 @@ public class Vinery implements ModSupport {
         TAIGA_RED_GRAPEJUICE = DoAddonFluids.registerDualStatesByName("taiga_red_grapejuice", TAIGA_RED_GRAPEJUICE_PROPS);
         TAIGA_WHITE_GRAPEJUICE = DoAddonFluids.registerDualStatesByName("taiga_white_grapejuice", TAIGA_WHITE_GRAPEJUICE_PROPS);
 
-        TEST_WINE = DoAddonFluids.registerDualStatesByName("test_wine", TEST_WINE_PROPS);
+        NOIR_WINE = DoAddonFluids.registerDualStatesByName("noir_wine", TEST_WINE_PROPS);
     }
 
     static RegistryEntry<Block> RED_GRAPEJUICE_BLOCK;

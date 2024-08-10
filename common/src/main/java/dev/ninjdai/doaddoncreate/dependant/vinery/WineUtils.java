@@ -5,7 +5,13 @@ import com.google.common.collect.ImmutableBiMap;
 import com.simibubi.create.foundation.utility.Pair;
 import com.teamresourceful.resourcefullib.common.registry.RegistryEntry;
 import dev.architectury.fluid.FluidStack;
+import dev.architectury.registry.registries.RegistrySupplier;
+import dev.ninjdai.doaddoncreate.registry.DoAddonFluids;
+import dev.ninjdai.doaddoncreate.registry.DoAddonTags;
+import net.minecraft.core.Registry;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -21,7 +27,7 @@ public interface WineUtils {
 
     static ItemStack fillBottle(ItemStack stack, FluidStack availableFluid) {
         CompoundTag tag = availableFluid.getOrCreateTag();
-        ItemStack bottleStack = new ItemStack(FLUIDS_TO_BOTTLES.get(availableFluid));
+        ItemStack bottleStack = new ItemStack(ObjectRegistry.NOIR_WINE_ITEM.get());
         bottleStack.getOrCreateTag().putInt("Year", tag.getInt("vinery:production_year"));
         return bottleStack;
     }
@@ -30,7 +36,7 @@ public interface WineUtils {
         RegistryEntry<Fluid> fl = FLUIDS_TO_BOTTLES.inverse().get(stack.getItem());
         CompoundTag fluidTag = new CompoundTag();
         fluidTag.putInt("vinery:production_year", stack.getOrCreateTag().getInt("Year"));
-        FluidStack fluidStack = FluidStack.create(fl.get(), 27000, fluidTag);
+        FluidStack fluidStack = FluidStack.create(fl, 27000, fluidTag);
         if (!simulate)
             stack.shrink(1);
         return Pair.of(fluidStack, new ItemStack(ObjectRegistry.WINE_BOTTLE.get()));
@@ -44,7 +50,7 @@ public interface WineUtils {
                 );
     }
 
-    BiMap<RegistryEntry<Fluid>, Item> FLUIDS_TO_BOTTLES = new ImmutableBiMap.Builder<RegistryEntry<Fluid>, Item>()
-            .put(Vinery.TEST_WINE.flowing(), ObjectRegistry.NOIR_WINE_ITEM.get())
-            .build();
+    BiMap<RegistryEntry<Fluid>, Item> FLUIDS_TO_BOTTLES = ImmutableBiMap.of(
+            Vinery.NOIR_WINE.flowing(), ObjectRegistry.NOIR_WINE_ITEM.get()
+    );
 }

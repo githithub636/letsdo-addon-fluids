@@ -16,7 +16,6 @@ import satisfyu.vinery.registry.ObjectRegistry;
 
 @SupportsMod("vinery")
 @Mixin(GenericItemFilling.class)
-@Debug(export = true)
 public class GenericItemFillingMixin {
 
     @Inject(method = "fillItem", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;copy()Lnet/minecraft/world/item/ItemStack;"), cancellable = true)

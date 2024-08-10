@@ -59,7 +59,7 @@ public class SupportLoader {
     }
 
     public static String[] classList() {
-        return MOD_SUPPORT_CLASSES.stream().map(Class::getName).toArray(String[]::new);
+        return MOD_SUPPORT_CLASSES.stream().map(Class::getSimpleName).toArray(String[]::new);
     }
 
 }
