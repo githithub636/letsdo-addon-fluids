@@ -22,7 +22,7 @@ public final class DoAddonCreate {
     }
 
     public static void init() {
-        SupportLoader.loadAllSupports();
+        SupportLoader.loadAllSupports(true);
         LOGGER.info("Loaded supports: {}", Arrays.toString(SupportLoader.classList()));
         SupportLoader.forAllLoadedDo(ModSupport::registerFluidProperties);
         DoAddonFluidProperties.FLUID_PROPERTIES.initialize();

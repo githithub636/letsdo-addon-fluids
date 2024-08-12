@@ -5,6 +5,10 @@ import dev.ninjdai.doaddoncreate.reflection.annotations.SupportsMod;
 import dev.ninjdai.doaddoncreate.registry.DoAddonFluidProperties;
 import dev.ninjdai.doaddoncreate.registry.DoAddonFluids;
 import earth.terrarium.botarium.common.registry.fluid.FluidData;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 
 import static dev.ninjdai.doaddoncreate.registry.DoAddonFluidProperties.FLUID_PROPERTIES;
 
@@ -47,4 +51,7 @@ public class Bakery implements ModSupport {
         SWEETBERRY_JAM = DoAddonFluids.registerDualStatesByName("sweetberry_jam", SWEETBERRY_JAM_PROPS);
         APPLE_JAM = DoAddonFluids.registerDualStatesByName("apple_jam", APPLE_JAM_PROPS);
     }
+
+    // Tags
+    public static TagKey<Item> JAMS = TagKey.create(Registries.ITEM, new ResourceLocation(new Bakery().supportedMod(), "jam"));
 }

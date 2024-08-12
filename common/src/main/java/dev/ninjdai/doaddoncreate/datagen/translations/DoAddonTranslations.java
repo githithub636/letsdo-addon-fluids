@@ -4,7 +4,7 @@ import dev.ninjdai.doaddoncreate.DoAddonCreate;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 
-public class DoAddonTranslations extends FabricLanguageProvider{
+public class DoAddonTranslations extends FabricLanguageProvider {
     public DoAddonTranslations(FabricDataOutput output) {
         super(output, "en_us");
     }

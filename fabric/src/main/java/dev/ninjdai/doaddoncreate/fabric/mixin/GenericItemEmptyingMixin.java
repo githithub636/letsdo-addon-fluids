@@ -16,14 +16,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import satisfyu.vinery.registry.TagRegistry;
 
 @SupportsMod("vinery")
-@Mixin(value = GenericItemEmptying.class)
+@Mixin(GenericItemEmptying.class)
 public class GenericItemEmptyingMixin {
 
     @Inject(method = "emptyItem", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/Container;setItem(ILnet/minecraft/world/item/ItemStack;)V"), cancellable = true)
     private static void emptyWine(Level world, ItemStack stack, boolean simulate, CallbackInfoReturnable<Pair<FluidStack, ItemStack>> cir) {
-        Pair<dev.architectury.fluid.FluidStack, ItemStack> result = WineUtils.emptyBottle(stack, simulate);
-        Pair<FluidStack, ItemStack> fabricatedResult = Pair.of(WineUtilsFabric.toPLFluidStack(result.getFirst()), result.getSecond());
         if (stack.is(TagRegistry.WINE)) {
+            Pair<dev.architectury.fluid.FluidStack, ItemStack> result = WineUtils.emptyBottle(stack, simulate);
+            Pair<FluidStack, ItemStack> fabricatedResult = Pair.of(WineUtilsFabric.toPLFluidStack(result.getFirst()), result.getSecond());
             cir.setReturnValue(fabricatedResult);
         }
     }

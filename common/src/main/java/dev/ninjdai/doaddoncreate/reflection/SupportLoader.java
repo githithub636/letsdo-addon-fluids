@@ -16,7 +16,7 @@ public class SupportLoader {
 
     static ArrayList<Class<? extends ModSupport>> MOD_SUPPORT_CLASSES = new ArrayList<>();
 
-    public static void loadAllSupports() {
+    public static void loadAllSupports(boolean doRFs) {
         Reflections reflections = new Reflections(
                 "dev.ninjdai.doaddoncreate.dependant"
         );
@@ -33,16 +33,18 @@ public class SupportLoader {
                 continue;
             }
 
-            Arrays.stream(clazz.getDeclaredMethods())
-                    .filter(method -> method.isAnnotationPresent(RunFirst.class))
-                    .forEach(method -> {
-                        try {
-                            method.setAccessible(true);
-                            method.invoke(null);
-                        } catch (Exception e) {
-                            DoAddonCreate.LOGGER.error("Error invoking method {}: {}", method.getName(), e.getMessage());
-                        }
-                    });
+            if (doRFs) {
+                Arrays.stream(clazz.getDeclaredMethods())
+                        .filter(method -> method.isAnnotationPresent(RunFirst.class))
+                        .forEach(method -> {
+                            try {
+                                method.setAccessible(true);
+                                method.invoke(null);
+                            } catch (Exception e) {
+                                DoAddonCreate.LOGGER.error("Error invoking method {}: {}", method.getName(), e.getMessage());
+                            }
+                        });
+            }
 
             MOD_SUPPORT_CLASSES.add(clazz);
         }
@@ -62,4 +64,7 @@ public class SupportLoader {
         return MOD_SUPPORT_CLASSES.stream().map(Class::getSimpleName).toArray(String[]::new);
     }
 
+    public static boolean supports(Class<? extends ModSupport> clazz) {
+        return MOD_SUPPORT_CLASSES.contains(clazz);
+    }
 }

@@ -1,12 +1,20 @@
 package dev.ninjdai.doaddoncreate.dependant.vinery;
 
+import com.simibubi.create.AllTags;
 import com.teamresourceful.resourcefullib.common.registry.RegistryEntry;
+import dev.ninjdai.doaddoncreate.datagen.tags.DoAddonTagGen;
 import dev.ninjdai.doaddoncreate.reflection.ModSupport;
 import dev.ninjdai.doaddoncreate.reflection.annotations.SupportsMod;
 import dev.ninjdai.doaddoncreate.registry.DoAddonFluidProperties;
 import dev.ninjdai.doaddoncreate.registry.DoAddonFluids;
 import earth.terrarium.botarium.common.registry.fluid.BotariumLiquidBlock;
 import earth.terrarium.botarium.common.registry.fluid.FluidData;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -69,6 +77,7 @@ public class Vinery implements ModSupport {
         NOIR_WINE = DoAddonFluids.registerDualStatesByName("noir_wine", TEST_WINE_PROPS);
     }
 
+    // Blocks
     static RegistryEntry<Block> RED_GRAPEJUICE_BLOCK;
     static RegistryEntry<Block> WHITE_GRAPEJUICE_BLOCK;
     static RegistryEntry<Block> JUNGLE_RED_GRAPEJUICE_BLOCK;
@@ -93,4 +102,7 @@ public class Vinery implements ModSupport {
 
         TEST_WINE_BLOCK = BLOCKS.register("test_wine", () -> new BotariumLiquidBlock(TEST_WINE_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_RED)));
     }
+
+    // Tags
+    public static TagKey<Item> GRAPEJUICE = TagKey.create(Registries.ITEM, new ResourceLocation(new Vinery().supportedMod(), "grapejuice"));
 }
