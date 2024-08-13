@@ -1,8 +1,8 @@
 package dev.ninjdai.doaddoncreate.dependant;
 
 import dev.ninjdai.doaddoncreate.DoAddonCreate;
-import dev.ninjdai.doaddoncreate.reflection.ModSupport;
-import dev.ninjdai.doaddoncreate.reflection.annotations.SupportsMod;
+import dev.ninjdai.doaddoncreate.support.ModSupport;
+import dev.ninjdai.doaddoncreate.support.annotations.SupportsMod;
 import dev.ninjdai.doaddoncreate.registry.DoAddonFluids;
 import dev.ninjdai.doaddoncreate.registry.DoAddonFluidProperties;
 import dev.ninjdai.doaddoncreate.utils.DoAddonColors;

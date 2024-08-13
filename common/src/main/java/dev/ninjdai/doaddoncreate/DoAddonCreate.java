@@ -1,7 +1,7 @@
 package dev.ninjdai.doaddoncreate;
 
-import dev.ninjdai.doaddoncreate.reflection.ModSupport;
-import dev.ninjdai.doaddoncreate.reflection.SupportLoader;
+import dev.ninjdai.doaddoncreate.support.ModSupport;
+import dev.ninjdai.doaddoncreate.support.SupportLoader;
 import dev.ninjdai.doaddoncreate.registry.DoAddonBlocks;
 import dev.ninjdai.doaddoncreate.registry.DoAddonFluidProperties;
 import dev.ninjdai.doaddoncreate.registry.DoAddonFluids;

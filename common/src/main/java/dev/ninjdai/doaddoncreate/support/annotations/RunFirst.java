@@ -1,6 +1,6 @@
-package dev.ninjdai.doaddoncreate.reflection.annotations;
+package dev.ninjdai.doaddoncreate.support.annotations;
 
-import dev.ninjdai.doaddoncreate.reflection.ModSupport;
+import dev.ninjdai.doaddoncreate.support.ModSupport;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

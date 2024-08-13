@@ -2,7 +2,7 @@ package dev.ninjdai.doaddoncreate.datagen.tags;
 
 import com.simibubi.create.AllTags;
 import dev.ninjdai.doaddoncreate.dependant.Bakery;
-import dev.ninjdai.doaddoncreate.dependant.vinery.Vinery;
+import dev.ninjdai.doaddoncreate.dependant.Vinery;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.core.HolderLookup;

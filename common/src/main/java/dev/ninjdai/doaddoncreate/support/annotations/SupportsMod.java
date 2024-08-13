@@ -1,4 +1,4 @@
-package dev.ninjdai.doaddoncreate.reflection.annotations;
+package dev.ninjdai.doaddoncreate.support.annotations;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

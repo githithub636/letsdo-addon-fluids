@@ -1,6 +1,6 @@
-package dev.ninjdai.doaddoncreate.reflection;
+package dev.ninjdai.doaddoncreate.support;
 
-import dev.ninjdai.doaddoncreate.reflection.annotations.SupportsMod;
+import dev.ninjdai.doaddoncreate.support.annotations.SupportsMod;
 
 public interface ModSupport {
     default void registerFluids() {};

@@ -1,10 +1,10 @@
-package dev.ninjdai.doaddoncreate.reflection;
+package dev.ninjdai.doaddoncreate.support;
 
 
 import dev.ninjdai.doaddoncreate.DoAddonCreate;
 import dev.ninjdai.doaddoncreate.DoAddonExpectPlatform;
-import dev.ninjdai.doaddoncreate.reflection.annotations.RunFirst;
-import dev.ninjdai.doaddoncreate.reflection.annotations.SupportsMod;
+import dev.ninjdai.doaddoncreate.support.annotations.RunFirst;
+import dev.ninjdai.doaddoncreate.support.annotations.SupportsMod;
 import org.reflections.Reflections;
 
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class SupportLoader {
 
     public static void loadAllSupports(boolean doRFs) {
         Reflections reflections = new Reflections(
-                "dev.ninjdai.doaddoncreate.dependant"
+                "dev.ninjdai.doaddoncreate.platform"
         );
 
         Set<Class<? extends ModSupport>> modSupportClasses = reflections.getSubTypesOf(ModSupport.class);

@@ -2,8 +2,7 @@ package dev.ninjdai.doaddoncreate.datagen;
 
 import dev.ninjdai.doaddoncreate.datagen.tags.DoAddonTagGen;
 import dev.ninjdai.doaddoncreate.datagen.translations.DoAddonTranslations;
-import dev.ninjdai.doaddoncreate.reflection.ModSupport;
-import dev.ninjdai.doaddoncreate.reflection.SupportLoader;
+import dev.ninjdai.doaddoncreate.support.SupportLoader;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 

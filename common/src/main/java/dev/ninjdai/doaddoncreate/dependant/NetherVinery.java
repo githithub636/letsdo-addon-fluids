@@ -1,8 +1,8 @@
 package dev.ninjdai.doaddoncreate.dependant;
 
 import com.teamresourceful.resourcefullib.common.registry.RegistryEntry;
-import dev.ninjdai.doaddoncreate.reflection.ModSupport;
-import dev.ninjdai.doaddoncreate.reflection.annotations.SupportsMod;
+import dev.ninjdai.doaddoncreate.support.ModSupport;
+import dev.ninjdai.doaddoncreate.support.annotations.SupportsMod;
 import dev.ninjdai.doaddoncreate.registry.DoAddonFluidProperties;
 import dev.ninjdai.doaddoncreate.registry.DoAddonFluids;
 import earth.terrarium.botarium.common.registry.fluid.BotariumLiquidBlock;

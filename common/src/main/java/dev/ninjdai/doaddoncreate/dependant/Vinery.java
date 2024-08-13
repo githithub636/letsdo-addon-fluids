@@ -1,17 +1,15 @@
-package dev.ninjdai.doaddoncreate.dependant.vinery;
+package dev.ninjdai.doaddoncreate.dependant;
 
-import com.simibubi.create.AllTags;
 import com.teamresourceful.resourcefullib.common.registry.RegistryEntry;
-import dev.ninjdai.doaddoncreate.datagen.tags.DoAddonTagGen;
-import dev.ninjdai.doaddoncreate.reflection.ModSupport;
-import dev.ninjdai.doaddoncreate.reflection.annotations.SupportsMod;
+import dev.ninjdai.doaddoncreate.support.ModSupport;
+import dev.ninjdai.doaddoncreate.support.annotations.SupportsMod;
 import dev.ninjdai.doaddoncreate.registry.DoAddonFluidProperties;
 import dev.ninjdai.doaddoncreate.registry.DoAddonFluids;
+import dev.ninjdai.doaddoncreate.utils.fluid.ExtraFluidDataRegistry;
 import earth.terrarium.botarium.common.registry.fluid.BotariumLiquidBlock;
 import earth.terrarium.botarium.common.registry.fluid.FluidData;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.nbt.IntTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -19,6 +17,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
+import satisfyu.vinery.registry.ObjectRegistry;
 
 import static dev.ninjdai.doaddoncreate.registry.DoAddonBlocks.BLOCKS;
 import static dev.ninjdai.doaddoncreate.registry.DoAddonFluidProperties.FLUID_PROPERTIES;
@@ -75,6 +74,11 @@ public class Vinery implements ModSupport {
         TAIGA_WHITE_GRAPEJUICE = DoAddonFluids.registerDualStatesByName("taiga_white_grapejuice", TAIGA_WHITE_GRAPEJUICE_PROPS);
 
         NOIR_WINE = DoAddonFluids.registerDualStatesByName("noir_wine", TEST_WINE_PROPS);
+        ExtraFluidDataRegistry.registerFluidBottle(
+                new ExtraFluidDataRegistry.Builder(ObjectRegistry.WINE_BOTTLE.get())
+                        .supports(NOIR_WINE, ObjectRegistry.NOIR_WINE_ITEM.get())
+                        .nbtMigrateFluidwards("Year", "vinery:production_year", IntTag.valueOf(0))
+        );
     }
 
     // Blocks
