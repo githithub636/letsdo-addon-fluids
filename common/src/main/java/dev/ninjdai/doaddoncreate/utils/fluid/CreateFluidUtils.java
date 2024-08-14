@@ -46,11 +46,13 @@ public interface CreateFluidUtils {
 
 
     static ItemStack fillBottle(ItemStack IS, FluidStack fluid) {
+        fluid.grow(1);
         Tag itemStack = CodecUtils.encodeSimple(
                 ExtraFluidDataRegistry.FLUID_SUPPORTS.get(
                         ExtraFluidDataRegistry.SUPPORTED_FLUIDS.get(fluid.getFluid())
                 ).codec(), Pair.of(IS, fluid)
         );
+        fluid.shrink(1);
         return ItemStack.of((CompoundTag) itemStack);
     }
 }
