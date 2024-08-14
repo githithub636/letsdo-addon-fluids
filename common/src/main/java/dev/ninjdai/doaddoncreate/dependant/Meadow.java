@@ -1,16 +1,25 @@
 package dev.ninjdai.doaddoncreate.dependant;
 
+import com.teamresourceful.resourcefullib.common.registry.RegistryEntry;
 import dev.ninjdai.doaddoncreate.DoAddonCreate;
+import dev.ninjdai.doaddoncreate.registry.blocks.fluids.GlitteringFluidBlock;
+import dev.ninjdai.doaddoncreate.registry.blocks.fluids.LavaLikeLiquidBlock;
 import dev.ninjdai.doaddoncreate.support.ModSupport;
 import dev.ninjdai.doaddoncreate.support.annotations.SupportsMod;
 import dev.ninjdai.doaddoncreate.registry.DoAddonFluids;
 import dev.ninjdai.doaddoncreate.registry.DoAddonFluidProperties;
 import dev.ninjdai.doaddoncreate.utils.DoAddonColors;
+import earth.terrarium.botarium.common.registry.fluid.BotariumLiquidBlock;
 import earth.terrarium.botarium.common.registry.fluid.FluidData;
 import earth.terrarium.botarium.common.registry.fluid.FluidProperties;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 
+import static dev.ninjdai.doaddoncreate.registry.DoAddonBlocks.BLOCKS;
 import static dev.ninjdai.doaddoncreate.registry.DoAddonFluidProperties.FLUID_PROPERTIES;
 
 @SupportsMod("meadow")
@@ -72,6 +81,7 @@ public class Meadow implements ModSupport {
         );
     }
 
+    static DoAddonFluids.StateIndependantFluid YEAST;
     static DoAddonFluids.StateIndependantFluid RENNET;
     static DoAddonFluids.StateIndependantFluid BUFFALO_MILK;
     static DoAddonFluids.StateIndependantFluid AMETHYST_MILK;
@@ -81,6 +91,7 @@ public class Meadow implements ModSupport {
     static DoAddonFluids.StateIndependantFluid WARPED_MILK;
 
     public void registerFluids() {
+        YEAST = DoAddonFluids.registerDualStatesByName("yeast", YEAST_PROPS);
         RENNET = DoAddonFluids.registerDualStatesByName("rennet", RENNET_PROPS);
         BUFFALO_MILK = DoAddonFluids.registerDualStatesByName("buffalo_milk", BUFFALO_PROPS);
         AMETHYST_MILK = DoAddonFluids.registerDualStatesByName("amethyst_milk", AMETHYST_PROPS);
@@ -90,14 +101,22 @@ public class Meadow implements ModSupport {
         WARPED_MILK = DoAddonFluids.registerDualStatesByName("warped_milk", WARPED_PROPS);
     }
 
+    static RegistryEntry<Block> YEAST_BLOCK;
+    static RegistryEntry<Block> BUFFALO_MILK_BLOCK;
+    static RegistryEntry<Block> AMETHYST_MILK_BLOCK;
+    static RegistryEntry<Block> SHEEP_MILK_BLOCK;
+    static RegistryEntry<Block> GRAIN_MILK_BLOCK;
+    static RegistryEntry<Block> GOAT_MILK_BLOCK;
+    static RegistryEntry<Block> WARPED_MILK_BLOCK;
+
     @Override
     public void registerBlocks() {
-        //public static final RegistryEntry<Block> YEAST_BLOCK = BLOCKS.register("yeast", () -> new LavaLikeLiquidBlock(DoAddonFluidProperties.YEAST, BlockBehaviour.Properties.copy(Blocks.LAVA).mapColor(MapColor.COLOR_BROWN)));
-    /*public static final RegistryEntry<Block> BUFFALO_MILK_BLOCK = BLOCKS.register("buffalo_milk", () -> new BotariumLiquidBlock(DoAddonFluidProperties.BUFFALO_MILK, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.TERRACOTTA_WHITE)));
-    public static final RegistryEntry<Block> AMETHYST_MILK_BLOCK = BLOCKS.register("amethyst_milk", () -> new BotariumLiquidBlock(DoAddonFluidProperties.AMETHYST_MILK, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.TERRACOTTA_PURPLE)));
-    public static final RegistryEntry<Block> SHEEP_MILK_BLOCK = BLOCKS.register("sheep_milk", () -> new BotariumLiquidBlock(DoAddonFluidProperties.SHEEP_MILK, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.TERRACOTTA_WHITE)));
-    public static final RegistryEntry<Block> GRAIN_MILK_BLOCK = BLOCKS.register("grain_milk", () -> new BotariumLiquidBlock(DoAddonFluidProperties.GRAIN_MILK, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_BROWN)));
-    public static final RegistryEntry<Block> GOAT_MILK_BLOCK = BLOCKS.register("goat_milk", () -> new BotariumLiquidBlock(DoAddonFluidProperties.GOAT_MILK, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.TERRACOTTA_WHITE)));
-    public static final RegistryEntry<Block> WARPED_MILK_BLOCK = BLOCKS.register("warped_milk", () -> new BotariumLiquidBlock(DoAddonFluidProperties.WARPED_MILK, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.WARPED_WART_BLOCK)));*/
+        YEAST_BLOCK = BLOCKS.register("yeast", () -> new LavaLikeLiquidBlock(YEAST_PROPS, BlockBehaviour.Properties.copy(Blocks.LAVA).mapColor(MapColor.COLOR_BROWN)));
+        BUFFALO_MILK_BLOCK = BLOCKS.register("buffalo_milk", () -> new BotariumLiquidBlock(BUFFALO_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.TERRACOTTA_WHITE)));
+        AMETHYST_MILK_BLOCK = BLOCKS.register("amethyst_milk", () -> new GlitteringFluidBlock(AMETHYST_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.TERRACOTTA_PURPLE)));
+        SHEEP_MILK_BLOCK = BLOCKS.register("sheep_milk", () -> new BotariumLiquidBlock(SHEEP_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.TERRACOTTA_WHITE)));
+        GRAIN_MILK_BLOCK = BLOCKS.register("grain_milk", () -> new BotariumLiquidBlock(GRAIN_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_BROWN)));
+        GOAT_MILK_BLOCK = BLOCKS.register("goat_milk", () -> new BotariumLiquidBlock(GOAT_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.TERRACOTTA_WHITE)));
+        WARPED_MILK_BLOCK = BLOCKS.register("warped_milk", () -> new BotariumLiquidBlock(WARPED_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.WARPED_WART_BLOCK)));
     }
 }

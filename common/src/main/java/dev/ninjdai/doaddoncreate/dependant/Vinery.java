@@ -1,6 +1,7 @@
 package dev.ninjdai.doaddoncreate.dependant;
 
 import com.teamresourceful.resourcefullib.common.registry.RegistryEntry;
+import dev.ninjdai.doaddoncreate.registry.blocks.fluids.GlitteringFluidBlock;
 import dev.ninjdai.doaddoncreate.support.ModSupport;
 import dev.ninjdai.doaddoncreate.support.annotations.SupportsMod;
 import dev.ninjdai.doaddoncreate.registry.DoAddonFluidProperties;
@@ -40,6 +41,7 @@ public class Vinery implements ModSupport {
     static FluidData NOIR_WINE_PROPS;
     static FluidData CHERRY_WINE_PROPS;
     static FluidData CHORUS_WINE_PROPS;
+    static FluidData EISWEIN_PROPS;
 
     @Override
     public void registerFluidProperties() {
@@ -54,9 +56,10 @@ public class Vinery implements ModSupport {
         TAIGA_RED_GRAPEJUICE_PROPS = FLUID_PROPERTIES.register("taiga_red_grapejuice", new DoAddonFluidProperties.BetterBuilder().setWhiskyBeerGrapeJuice().namespacedTextures(supportedMod(), "taiga_red_grapejuice").get().viscosity(GRAPEJUICE_VISCOSITY));
         TAIGA_WHITE_GRAPEJUICE_PROPS = FLUID_PROPERTIES.register("taiga_white_grapejuice", new DoAddonFluidProperties.BetterBuilder().setWhiskyBeerGrapeJuice().namespacedTextures(supportedMod(), "taiga_white_grapejuice").get().viscosity(GRAPEJUICE_VISCOSITY));
 
-        NOIR_WINE_PROPS = FLUID_PROPERTIES.register("noir_wine", new DoAddonFluidProperties.BetterBuilder().setWhiskyBeerGrapeJuice().tintColor(new Color(0x351D29)).get().viscosity(GRAPEJUICE_VISCOSITY));
-        CHERRY_WINE_PROPS = FLUID_PROPERTIES.register("cherry_wine", new DoAddonFluidProperties.BetterBuilder().setWhiskyBeerGrapeJuice().tintColor(new Color(0x4E062B)).get().viscosity(GRAPEJUICE_VISCOSITY));
-        CHORUS_WINE_PROPS = FLUID_PROPERTIES.register("chorus_wine", new DoAddonFluidProperties.BetterBuilder().setWhiskyBeerGrapeJuice().tintColor(new Color(0x542E55)).get().viscosity(GRAPEJUICE_VISCOSITY));
+        NOIR_WINE_PROPS = FLUID_PROPERTIES.register("noir_wine", new DoAddonFluidProperties.BetterBuilder().setWhiskyBeerGrapeJuice().tintColor(new Color(0x5E2A45)).get().viscosity(GRAPEJUICE_VISCOSITY));
+        CHERRY_WINE_PROPS = FLUID_PROPERTIES.register("cherry_wine", new DoAddonFluidProperties.BetterBuilder().setWhiskyBeerGrapeJuice().tintColor(new Color(0x7E174C)).get().viscosity(GRAPEJUICE_VISCOSITY));
+        CHORUS_WINE_PROPS = FLUID_PROPERTIES.register("chorus_wine", new DoAddonFluidProperties.BetterBuilder().setWhiskyBeerGrapeJuice().tintColor(new Color(0x825083)).get().viscosity(GRAPEJUICE_VISCOSITY));
+        EISWEIN_PROPS = FLUID_PROPERTIES.register("eiswein", new DoAddonFluidProperties.BetterBuilder().setWhiskyBeerGrapeJuice().tintColor(new Color(0x4C5ED1)).get().viscosity(GRAPEJUICE_VISCOSITY));
     }
 
     static DoAddonFluids.StateIndependantFluid RED_GRAPEJUICE;
@@ -71,6 +74,7 @@ public class Vinery implements ModSupport {
     static DoAddonFluids.StateIndependantFluid NOIR_WINE;
     static DoAddonFluids.StateIndependantFluid CHERRY_WINE;
     static DoAddonFluids.StateIndependantFluid CHORUS_WINE;
+    static DoAddonFluids.StateIndependantFluid EISWEIN;
 
     public void registerFluids() {
         RED_GRAPEJUICE = DoAddonFluids.registerDualStatesByName("red_grapejuice", RED_GRAPEJUICE_PROPS);
@@ -85,12 +89,14 @@ public class Vinery implements ModSupport {
         NOIR_WINE = DoAddonFluids.registerDualStatesByName("noir_wine", NOIR_WINE_PROPS);
         CHERRY_WINE = DoAddonFluids.registerDualStatesByName("cherry_wine", CHERRY_WINE_PROPS);
         CHORUS_WINE = DoAddonFluids.registerDualStatesByName("chorus_wine", CHORUS_WINE_PROPS);
+        EISWEIN = DoAddonFluids.registerDualStatesByName("eiswein", EISWEIN_PROPS);
 
         ExtraFluidDataRegistry.registerFluidDA(
                 FluidDataAttachment.create(ObjectRegistry.WINE_BOTTLE.get())
                         .supports(NOIR_WINE, ObjectRegistry.NOIR_WINE_ITEM.get())
                         .supports(CHERRY_WINE, ObjectRegistry.CHERRY_WINE_ITEM.get())
                         .supports(CHORUS_WINE, ObjectRegistry.CHORUS_WINE_ITEM.get())
+                        .supports(EISWEIN, ObjectRegistry.EISWEIN_ITEM.get())
                         .nbtMigrateFluidwards("Year", "vinery:production_year", IntTag.valueOf(0))
                         .build()
         );
@@ -109,6 +115,7 @@ public class Vinery implements ModSupport {
     static RegistryEntry<Block> NOIR_WINE_BLOCK;
     static RegistryEntry<Block> CHERRY_WINE_BLOCK;
     static RegistryEntry<Block> CHORUS_WINE_BLOCK;
+    static RegistryEntry<Block> EISWEIN_BLOCK;
 
     @Override
     public void registerBlocks() {
@@ -124,6 +131,7 @@ public class Vinery implements ModSupport {
         NOIR_WINE_BLOCK = BLOCKS.register("noir_wine", () -> new BotariumLiquidBlock(NOIR_WINE_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_RED)));
         CHERRY_WINE_BLOCK = BLOCKS.register("cherry_wine", () -> new BotariumLiquidBlock(CHERRY_WINE_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_RED)));
         CHORUS_WINE_BLOCK = BLOCKS.register("chorus_wine", () -> new BotariumLiquidBlock(CHORUS_WINE_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.TERRACOTTA_PURPLE)));
+        EISWEIN_BLOCK = BLOCKS.register("eiswein", () -> new GlitteringFluidBlock(EISWEIN_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_LIGHT_BLUE)));
     }
 
     // Tags

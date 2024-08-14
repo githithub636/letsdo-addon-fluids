@@ -57,6 +57,14 @@
         {
             "id": "bakery:jar",
             "required": false
+        },
+        {
+            "id": "#meadow:wooden_milk_bucket",
+            "required": false
+        },
+        {
+            "id": "meadow:wooden_bucket",
+            "required": false
         }
     ]
 }
