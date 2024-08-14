@@ -18,7 +18,7 @@ public class SupportLoader {
 
     public static void loadAllSupports(boolean doRFs) {
         Reflections reflections = new Reflections(
-                "dev.ninjdai.doaddoncreate.platform"
+                "dev.ninjdai.doaddoncreate.dependant"
         );
 
         Set<Class<? extends ModSupport>> modSupportClasses = reflections.getSubTypesOf(ModSupport.class);

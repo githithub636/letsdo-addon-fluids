@@ -5,6 +5,8 @@ import earth.terrarium.botarium.common.registry.fluid.FluidProperties;
 import earth.terrarium.botarium.common.registry.fluid.FluidRegistry;
 import net.minecraft.resources.ResourceLocation;
 
+import java.awt.*;
+
 public class DoAddonFluidProperties {
 
     public static final FluidRegistry FLUID_PROPERTIES = new FluidRegistry(DoAddonCreate.MOD_ID);
@@ -76,6 +78,11 @@ public class DoAddonFluidProperties {
 
         public BetterBuilder setJam() {
             internal.density(1500);
+            return this;
+        }
+
+        public BetterBuilder tintColor(Color col) {
+            internal.tintColor(col.getRGB());
             return this;
         }
 
