@@ -65,6 +65,14 @@
         {
             "id": "meadow:wooden_bucket",
             "required": false
+        },
+        {
+            "id": "#brewery:beer",
+            "required": false
+        },
+        {
+            "id": "brewery:beer_mug",
+            "required": false
         }
     ]
 }

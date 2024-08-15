@@ -5,11 +5,13 @@ import com.google.common.collect.HashBiMap;
 import com.mojang.serialization.Codec;
 import com.simibubi.create.foundation.utility.Pair;
 import dev.architectury.fluid.FluidStack;
+import dev.architectury.registry.registries.RegistrySupplier;
 import dev.ninjdai.doaddoncreate.registry.DoAddonFluids;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
 
 import java.util.ArrayList;
@@ -53,6 +55,11 @@ public record FluidDataAttachment(
 
         public Builder supports(DoAddonFluids.StateIndependantFluid fluid, Item fullBottleItem) {
             supports.put(fluid.source().get(), fullBottleItem);
+            return this;
+        }
+
+        public Builder supports(DoAddonFluids.StateIndependantFluid fluid, RegistrySupplier<Block> fullBottleBlockItem) {
+            supports.put(fluid.source().get(), fullBottleBlockItem.get().asItem());
             return this;
         }
 

@@ -6,6 +6,8 @@ public enum DoAddonColors {
     //BREWERY
     WHEAT_BEER(255, 227, 134),
     BARLEY_BEER(255, 225, 165),
+    OAT_BEER(248, 211, 122),
+    NETTLE_BEER(195, 209, 154),
     HOPS_BEER(247, 240, 233),
     HALEY_BEER(137, 46, 53),
 
