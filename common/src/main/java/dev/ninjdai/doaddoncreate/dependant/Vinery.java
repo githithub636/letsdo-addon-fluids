@@ -1,6 +1,7 @@
 package dev.ninjdai.doaddoncreate.dependant;
 
 import com.teamresourceful.resourcefullib.common.registry.RegistryEntry;
+import dev.architectury.platform.Platform;
 import dev.ninjdai.doaddoncreate.registry.blocks.fluids.GlitteringFluidBlock;
 import dev.ninjdai.doaddoncreate.support.ModSupport;
 import dev.ninjdai.doaddoncreate.support.annotations.SupportsMod;
@@ -22,6 +23,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.satisfy.vinery.registry.ObjectRegistry;
 
 import java.awt.*;
+import java.util.function.Supplier;
 
 import static dev.ninjdai.doaddoncreate.registry.DoAddonBlocks.BLOCKS;
 import static dev.ninjdai.doaddoncreate.registry.DoAddonFluidProperties.FLUID_PROPERTIES;
@@ -94,12 +96,18 @@ public class Vinery implements ModSupport {
         ExtraFluidDataRegistry.registerFluidDA(
                 FluidDataAttachment.create(ObjectRegistry.WINE_BOTTLE.get())
                         .supports(NOIR_WINE, ObjectRegistry.NOIR_WINE_ITEM.get())
-                        .supports(CHERRY_WINE, ObjectRegistry.CHERRY_WINE_ITEM.get())
-                        .supports(CHORUS_WINE, ObjectRegistry.CHORUS_WINE_ITEM.get())
-                        .supports(EISWEIN, ObjectRegistry.EISWEIN_ITEM.get())
+                        .supports(CHERRY_WINE, getRegistrarItemSupplier("cherry_wine"))
+                        .supports(CHORUS_WINE, getRegistrarItemSupplier("chorus_wine"))
+                        .supports(EISWEIN, getRegistrarItemSupplier("eiswein"))
                         .nbtMigrateFluidwards("Year", "vinery:production_year", IntTag.valueOf(0))
                         .build()
         );
+    }
+
+    private Supplier<Item> getRegistrarItemSupplier(String id){
+        return Platform.isForge()
+                ? () -> ObjectRegistry.ITEMS.getRegistrar().get(new ResourceLocation(new Vinery().supportedMod(), id))
+                : () -> ObjectRegistry.ITEM_REGISTRAR.get(new ResourceLocation(new Vinery().supportedMod(), id));
     }
 
     // Blocks

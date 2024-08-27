@@ -15,12 +15,13 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
 
 import java.util.ArrayList;
+import java.util.function.Supplier;
 
 public record FluidDataAttachment(
         Codec<Pair<ItemStack, FluidStack>> codec,
         int amountPerBottle,
         ArrayList<Builder.NbtMigrate> migrates,
-        BiMap<Fluid, Item> supports,
+        BiMap<Fluid, Supplier<Item>> supports,
         Item emptyBottleItem) {
 
     public static Builder create(Item emptyBottleItem) {
@@ -33,7 +34,7 @@ public record FluidDataAttachment(
 
         Item emptyBottleItem;
 
-        BiMap<Fluid, Item> supports = HashBiMap.create();
+        BiMap<Fluid, Supplier<Item>> supports = HashBiMap.create();
 
         private Builder(Item emptyBottleItem) {
             this.emptyBottleItem = emptyBottleItem;
@@ -54,12 +55,17 @@ public record FluidDataAttachment(
         }
 
         public Builder supports(DoAddonFluids.StateIndependantFluid fluid, Item fullBottleItem) {
+            supports.put(fluid.source().get(), () -> fullBottleItem);
+            return this;
+        }
+
+        public Builder supports(DoAddonFluids.StateIndependantFluid fluid, Supplier<Item> fullBottleItem) {
             supports.put(fluid.source().get(), fullBottleItem);
             return this;
         }
 
         public Builder supports(DoAddonFluids.StateIndependantFluid fluid, RegistrySupplier<Block> fullBottleBlockItem) {
-            supports.put(fluid.source().get(), fullBottleBlockItem.get().asItem());
+            supports.put(fluid.source().get(), () -> fullBottleBlockItem.get().asItem());
             return this;
         }
 
@@ -74,7 +80,11 @@ public record FluidDataAttachment(
                                 fluidTag.put(migrate.to, migrate.defaultValue);
                             }
                         });
-                        return Pair.of(new ItemStack(emptyBottleItem), FluidStack.create(supports.inverse().get(itemStack.getItem()), amountPerBottle, fluidTag));
+                        Supplier<Item> itemSupplier = null;
+                        for (Supplier<Item> key: supports.inverse().keySet()) {
+                            if (key.get() == itemStack.getItem()) itemSupplier = key;
+                        }
+                        return Pair.of(new ItemStack(emptyBottleItem), FluidStack.create(supports.inverse().get(itemSupplier), amountPerBottle, fluidTag));
                     },
                     pair -> {
                         CompoundTag itemTag = new CompoundTag();
@@ -86,7 +96,7 @@ public record FluidDataAttachment(
                                 itemTag.put(migrate.from, migrate.defaultValue);
                             }
                         });
-                        ItemStack stack = new ItemStack(supports.get(pair.getSecond().getFluid()));
+                        ItemStack stack = new ItemStack(supports.get(pair.getSecond().getFluid()).get());
                         stack.setTag(itemTag);
                         return stack;
                     }

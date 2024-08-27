@@ -18,7 +18,7 @@ public interface ExtraFluidDataRegistry {
     static void registerFluidDA(FluidDataAttachment fluidAttachment) {
         int index = FLUID_SUPPORTS.size();
         fluidAttachment.supports().forEach((fluid, item) -> {
-            SUPPORTED_FLUID_BOTTLES.put(item, index);
+            SUPPORTED_FLUID_BOTTLES.put(item.get(), index);
             SUPPORTED_FLUIDS.put(fluid, index);
         });
 
