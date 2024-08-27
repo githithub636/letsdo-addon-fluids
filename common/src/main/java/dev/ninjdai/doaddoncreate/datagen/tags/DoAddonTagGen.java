@@ -21,14 +21,14 @@ public class DoAddonTagGen extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(AllTags.AllItemTags.UPRIGHT_ON_BELT.tag)
                 // Vinery
                 .addOptionalTag(Vinery.GRAPEJUICE)
-                .addOptionalTag(satisfyu.vinery.registry.TagRegistry.WINE)
-                .addOptional(satisfyu.vinery.registry.ObjectRegistry.WINE_BOTTLE.getId())
+                .addOptionalTag(net.satisfy.vinery.registry.TagRegistry.WINE)
+                .addOptional(net.satisfy.vinery.registry.ObjectRegistry.WINE_BOTTLE.getId())
                 // Bakery
                 .addOptionalTag(Bakery.JAMS)
                 .addOptional(net.satisfy.bakery.registry.ObjectRegistry.JAR.getId())
                 // Meadow
-                .addOptionalTag(net.satisfyu.meadow.registry.TagRegistry.WOODEN_MILK_BUCKET)
-                .addOptional(net.satisfyu.meadow.registry.ObjectRegistry.WOODEN_BUCKET.getId())
+                .addOptionalTag(net.satisfy.meadow.registry.TagRegistry.WOODEN_MILK_BUCKET)
+                .addOptional(net.satisfy.meadow.registry.ObjectRegistry.WOODEN_BUCKET.getId())
                 // Brewery
                 .addOptionalTag(Brewery.BEERS)
                 .addOptional(net.satisfy.brewery.registry.ObjectRegistry.BEER_MUG.getId());
