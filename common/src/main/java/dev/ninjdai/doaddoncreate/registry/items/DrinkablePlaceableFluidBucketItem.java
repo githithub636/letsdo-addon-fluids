@@ -17,7 +17,7 @@ import net.minecraft.world.level.block.LiquidBlockContainer;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
-import net.satisfyu.meadow.registry.ObjectRegistry;
+import net.satisfy.meadow.registry.ObjectRegistry;
 import org.jetbrains.annotations.NotNull;
 
 public class DrinkablePlaceableFluidBucketItem extends FluidBucketItem {
