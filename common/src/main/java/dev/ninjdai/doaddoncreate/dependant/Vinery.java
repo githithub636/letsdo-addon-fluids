@@ -288,18 +288,18 @@ public class Vinery implements ModSupport {
 
         CHERRY_WINE_BLOCK = BLOCKS.register("cherry_wine", () -> new BotariumLiquidBlock(CHERRY_WINE_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_RED)));
         CHORUS_WINE_BLOCK = BLOCKS.register("chorus_wine", () -> new BotariumLiquidBlock(CHORUS_WINE_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.TERRACOTTA_PURPLE)));
-        MAGNETIC_WINE_BLOCK = BLOCKS.register("magnetic_wine", () -> new BotariumLiquidBlock(CHERRY_WINE_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_GRAY)));
-        JO_SPECIAL_MIXTURE_BLOCK = BLOCKS.register("jo_special_mixture", () -> new BotariumLiquidBlock(CHERRY_WINE_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_RED)));
-        CRISTEL_WINE_BLOCK = BLOCKS.register("cristel_wine", () -> new BotariumLiquidBlock(CHERRY_WINE_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_RED)));
-        GLOWING_WINE_BLOCK = BLOCKS.register("glowing_wine", () -> new GlitteringFluidBlock(CHERRY_WINE_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_RED)));
-        CREEPERS_CRUSH_BLOCK = BLOCKS.register("creepers_crush", () -> new GlitteringFluidBlock(CHERRY_WINE_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_LIGHT_GREEN)));
-        MEAD_BLOCK = BLOCKS.register("mead", () -> new BotariumLiquidBlock(CHERRY_WINE_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_RED)));
-        RED_WINE_BLOCK = BLOCKS.register("red_wine", () -> new BotariumLiquidBlock(CHERRY_WINE_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_RED)));
-        JELLIE_WINE_BLOCK = BLOCKS.register("jellie_wine", () -> new BotariumLiquidBlock(CHERRY_WINE_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_RED)));
-        STAL_WINE_BLOCK = BLOCKS.register("stal_wine", () -> new BotariumLiquidBlock(CHERRY_WINE_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_RED)));
+        MAGNETIC_WINE_BLOCK = BLOCKS.register("magnetic_wine", () -> new BotariumLiquidBlock(MAGNETIC_WINE_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_GRAY)));
+        JO_SPECIAL_MIXTURE_BLOCK = BLOCKS.register("jo_special_mixture", () -> new BotariumLiquidBlock(JO_SPECIAL_MIXTURE_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_RED)));
+        CRISTEL_WINE_BLOCK = BLOCKS.register("cristel_wine", () -> new BotariumLiquidBlock(CRISTEL_WINE_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_RED)));
+        GLOWING_WINE_BLOCK = BLOCKS.register("glowing_wine", () -> new GlitteringFluidBlock(GLOWING_WINE_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_RED)));
+        CREEPERS_CRUSH_BLOCK = BLOCKS.register("creepers_crush", () -> new GlitteringFluidBlock(CREEPERS_CRUSH_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_LIGHT_GREEN)));
+        MEAD_BLOCK = BLOCKS.register("mead", () -> new BotariumLiquidBlock(MEAD_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_RED)));
+        RED_WINE_BLOCK = BLOCKS.register("red_wine", () -> new BotariumLiquidBlock(RED_WINE_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_RED)));
+        JELLIE_WINE_BLOCK = BLOCKS.register("jellie_wine", () -> new BotariumLiquidBlock(JELLIE_WINE_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_RED)));
+        STAL_WINE_BLOCK = BLOCKS.register("stal_wine", () -> new BotariumLiquidBlock(STAL_WINE_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_RED)));
         NOIR_WINE_BLOCK = BLOCKS.register("noir_wine", () -> new BotariumLiquidBlock(NOIR_WINE_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_RED)));
-        BOLVAR_WINE_BLOCK = BLOCKS.register("bolvar_wine", () -> new BotariumLiquidBlock(CHERRY_WINE_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_RED)));
-        SOLARIS_WINE_BLOCK = BLOCKS.register("solaris_wine", () -> new BotariumLiquidBlock(CHERRY_WINE_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_YELLOW)));
+        BOLVAR_WINE_BLOCK = BLOCKS.register("bolvar_wine", () -> new BotariumLiquidBlock(BOLVAR_WINE_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_RED)));
+        SOLARIS_WINE_BLOCK = BLOCKS.register("solaris_wine", () -> new BotariumLiquidBlock(SOLARIS_WINE_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_YELLOW)));
         EISWEIN_BLOCK = BLOCKS.register("eiswein", () -> new GlitteringFluidBlock(EISWEIN_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_LIGHT_BLUE)));
         CHENET_WINE_BLOCK = BLOCKS.register("chenet_wine", () -> new BotariumLiquidBlock(CHENET_WINE_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_LIGHT_BLUE)));
         KELP_CIDER_BLOCK = BLOCKS.register("kelp_cider", () -> new BotariumLiquidBlock(KELP_CIDER_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_LIGHT_BLUE)));
@@ -312,9 +312,9 @@ public class Vinery implements ModSupport {
         KNULP_WINE_BLOCK = BLOCKS.register("knulp_wine", () -> new BotariumLiquidBlock(KNULP_WINE_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_LIGHT_BLUE)));
         LILITU_WINE_BLOCK = BLOCKS.register("lilitu_wine", () -> new BotariumLiquidBlock(LILITU_WINE_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_LIGHT_BLUE)));
         BOTTLE_MOJANG_NOIR_BLOCK = BLOCKS.register("bottle_mojang_noir", () -> new BotariumLiquidBlock(BOTTLE_MOJANG_NOIR_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_LIGHT_BLUE)));
-        VILLAGERS_FRIGHT_BLOCK = BLOCKS.register("villagers_fright", () -> new BotariumLiquidBlock(EISWEIN_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_LIGHT_BLUE)));
-        COUNT_ROLEESTER_SHIRAZ_BLOCK = BLOCKS.register("count_roleester_shiraz", () -> new BotariumLiquidBlock(EISWEIN_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_LIGHT_BLUE)));
-        LAMROC_WINE_BLOCK = BLOCKS.register("lamroc_wine", () -> new BotariumLiquidBlock(EISWEIN_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_LIGHT_BLUE)));
+        VILLAGERS_FRIGHT_BLOCK = BLOCKS.register("villagers_fright", () -> new BotariumLiquidBlock(VILLAGERS_FRIGHT_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_LIGHT_BLUE)));
+        COUNT_ROLEESTER_SHIRAZ_BLOCK = BLOCKS.register("count_roleester_shiraz", () -> new BotariumLiquidBlock(COUNT_ROLEESTER_SHIRAZ_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_LIGHT_BLUE)));
+        LAMROC_WINE_BLOCK = BLOCKS.register("lamroc_wine", () -> new BotariumLiquidBlock(LAMROC_WINE_PROPS, BlockBehaviour.Properties.copy(Blocks.WATER).mapColor(MapColor.COLOR_LIGHT_BLUE)));
     }
 
     // Tags
