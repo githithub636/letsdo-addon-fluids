@@ -215,7 +215,7 @@ public class Vinery implements ModSupport {
                         .supports(AEGIS_WINE, getRegistrarItemSupplier("aegis_wine"))
                         .supports(CLARK_WINE, getRegistrarItemSupplier("clark_wine"))
                         .supports(MELLOHI_WINE, getRegistrarItemSupplier("mellohi_wine"))
-                        .supports(STRAD_WINE, getRegistrarItemSupplier("mellohi_wine"))
+                        .supports(STRAD_WINE, getRegistrarItemSupplier("strad_wine"))
                         .supports(APPLE_CIDER, getRegistrarItemSupplier("apple_cider"))
                         .supports(APPLE_WINE, getRegistrarItemSupplier("apple_wine"))
                         .supports(KNULP_WINE, getRegistrarItemSupplier("knulp_wine"))
