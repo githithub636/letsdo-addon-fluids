@@ -25,6 +25,9 @@
     ],
     "client": [
       "dev.ninjdai.doaddoncreate.fabric.client.DoAddonCreateFabricClient"
+    ],
+    "fabric-gametest": [
+      "dev.ninjdai.doaddoncreate.test.DoAddonTests"
     ]
   },
   "mixins": [

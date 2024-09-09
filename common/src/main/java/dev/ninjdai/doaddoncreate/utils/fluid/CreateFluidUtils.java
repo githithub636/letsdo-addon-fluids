@@ -1,7 +1,9 @@
 package dev.ninjdai.doaddoncreate.utils.fluid;
 
+import com.simibubi.create.content.fluids.tank.FluidTankBlockEntity;
 import com.simibubi.create.foundation.utility.Pair;
 import dev.architectury.fluid.FluidStack;
+import dev.architectury.injectables.annotations.ExpectPlatform;
 import dev.ninjdai.doaddoncreate.utils.CodecUtils;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
@@ -55,4 +57,10 @@ public interface CreateFluidUtils {
         fluid.shrink(1);
         return ItemStack.of((CompoundTag) itemStack);
     }
+
+    @ExpectPlatform
+    static void setFluidStack(FluidTankBlockEntity be, FluidStack stack) {}
+
+    @ExpectPlatform
+    static int getTotalSize(FluidTankBlockEntity be) { return 0; }
 }
