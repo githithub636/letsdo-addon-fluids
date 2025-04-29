@@ -63,7 +63,7 @@ remapJar {
     configurations = [project.configurations.shadowCommon]
     archiveClassifier = "dev-shadow"
 }
-}
+
 
 sourceSets {
     main {
