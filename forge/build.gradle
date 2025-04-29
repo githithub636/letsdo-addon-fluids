@@ -58,7 +58,11 @@ shadowJar {
 }
 
 remapJar {
-    input.set shadowJar.archiveFile
+    exclude "fabric.mod.json"
+
+    configurations = [project.configurations.shadowCommon]
+    archiveClassifier = "dev-shadow"
+}
 }
 
 sourceSets {
